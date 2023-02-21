@@ -4,6 +4,7 @@ import { Switch, FormControlLabel, Typography, BottomNavigation,BottomNavigation
 import CssBaseline from '@mui/material/CssBaseline';
 import { styled } from '@mui/system';
 import SendIcon from '@mui/icons-material/Send';
+import axios from 'axios';
 
 const options=[
     {
@@ -29,11 +30,18 @@ const options=[
 ]
 
 
+
 const App = () => {
     const [darkMode, setDarkMode]=useState(false)
     const [value, setValue]=useState(0)
+    const [endpoint, setEndpoint]=useState('')
+    const [response, setResponse]=useState('')
    
-
+    const handleSubmit=async(e) => {
+        e.preventDefault()
+        const result=await axios.get(endpoint)
+        setResponse(JSON.stringify(result.data))
+    }
     const theme= createTheme({
         palette: {
             mode: darkMode ? 'dark' : 'light'
@@ -57,6 +65,7 @@ const App = () => {
                     </Typography>
                 </header>
             <Container style={{maxWidth: '1000px', height: '660px'}}>
+            <form onSubmit={handleSubmit}>
                 <Stack direction="row" spacing={2}>
                 <TextField 
                     style={{width: '130px'}}
@@ -77,6 +86,8 @@ const App = () => {
                     label="Enter request URL"
                     id="outlined-basic" 
                     size='small'
+                    value={endpoint}
+                    onChange={(e) => setEndpoint(e.target.value)}
                     sx={{
                         width: 750,
                         maxWidth: '100%'
@@ -85,12 +96,14 @@ const App = () => {
                 </TextField>
                 <Button 
                     variant='contained'
+                    type='submit'
                     size="medium"
                     endIcon={<SendIcon />}
                 >
                     Send
                 </Button>
                 </Stack>
+                </form>
                 <BottomNavigation
                     value={value}
                     showLabels
@@ -102,6 +115,9 @@ const App = () => {
                     <BottomNavigationAction label="Authorization"/>
                     <BottomNavigationAction label="Headers"/>
                 </BottomNavigation>
+                <div>
+                    {response}
+                </div>
             </Container>
         </div>
     </ThemeProvider>
