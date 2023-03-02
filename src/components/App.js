@@ -1,77 +1,83 @@
 import React, { useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Switch, FormControlLabel, Typography, BottomNavigation,BottomNavigationAction, Container, Stack, TextField, Button, MenuItem } from '@mui/material';
+import { Switch, FormControlLabel, BottomNavigation, BottomNavigationAction, Container } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import SendIcon from '@mui/icons-material/Send';
+import Params from './Params';
+import Authorization from './Authorization';
+import axios from 'axios';
+import Header from './Header';
+import Form from './Form';
 
-const options=[
-    {
-        value: 'GET',
-        label: 'GET'
-    },
-    {
-        value: 'PUT',
-        label: 'PUT'
-    },
-    {
-        value: 'POST',
-        label: 'POST'
-    },
-    {
-        value: 'PATCH',
-        label: 'PATCH'
-    },
-    {
-        value: 'DELETE',
-        label: 'DELETE'
-    }
-]
 
-const musicPlatform=[
-    {
-        id: 1,
-        name: 'youtube'
-    },
-    {
-        id: 2,
-        name: 'spotify'
-    },
-    {
-        id: 3,
-        name: 'deezer'
-    }
-]
 
 const App = () => {
     const [darkMode, setDarkMode]=useState(false)
     const [value, setValue]=useState(0)
-    const [endpoint, setEndpoint]=useState('')
-    const [endpoint1, setEndpoint1]=useState('')
+    const [music, setMusic]=useState('')
+    const [endpoint1, setEndpoint1]=useState('Type')
     const [endpoint2, setEndpoint2]=useState('')
+    const [endpoint3, setEndpoint3]=useState('subType')
+    const [endpoint4, setEndpoint4]=useState('')
+    const [endpoint5, setEndpoint5]=useState('api')
+    const [endpoint6, setEndpoint6]=useState('')
+    const [endpoint7, setEndpoint7]=useState('q')
+    const [endpoint8, setEndpoint8]=useState('')
     const [methods, setMethods]=useState('')
     const [url, setUrl]=useState('')
     const [token, setToken]=useState('')
     const [data, setData]=useState(null)
     const [show, setShow]=useState(true)
     const [show1, setShow1]=useState(true)
+    const [show2, setShow2]=useState(true)
     const [error, setError]=useState(null)
+    
 
-    const handleSubmit=async(e) => {
-        e.preventDefault()
-
-    const result=await fetch(`${url}/${endpoint}`,{
-        method: `${methods}`,
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        }
-    })
-    .then(res=> res.json())
-    .then((result)=>result)
-    .catch(error=> setError(error)) 
-        setData({result})
+    // const [selectedMethod, setSelectedMethod]=useState(null)
+    
+    
+   
+    const onClickGetPost=async() => {
+        const response=await axios.get(`${url}/${music}`,{
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response=> response.data)
+        .then(json=>json)
+        .catch(error=> setError(error)) 
+            setData({response})
     }
-
+    
+    const onClickCreatePost=async() => {
+        const response1=await axios.post(`${url}/${music}`,{
+                type: `${endpoint2}`,
+                subType: `${endpoint4}`,
+                api: `${endpoint6}`,
+                params: {
+                    q: `${endpoint8}`
+                }
+            },
+            {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        } 
+        )
+        .then(response1 => response1.data)
+        .then(json =>json)
+        .catch(error=> setError(error))
+            setData({response1})
+    }
+    // const handleButtonClick=() => {
+    //     if(selectedMethod==='get') {
+    //         onClickGetPost()
+    //     } else {
+    //         onClickCreatePost()
+    //     }
+    // }
+   
     const theme= createTheme({
         palette: {
             mode: darkMode ? 'dark' : 'light'
@@ -88,68 +94,19 @@ const App = () => {
                 labelPlacement="end"
             />
             <div className='app'>
-                <header className='App-header'>
-                        <Typography variant='h3' style={{textAlign: 'center', fontSize: '35px', marginBottom: '40px'}}>
-                            API testing
-                        </Typography>
-                    </header>
+                <Header />
                 <Container style={{maxWidth: '1200px', height: '660px'}}>
-                <form onSubmit={handleSubmit}>
-                    <Stack direction="row" spacing={2}>
-                    <TextField 
-                        style={{width: '155px', marginLeft: '170px'}}
-                        select
-                        label="Select methods"
-                        id="outlined-select-options"
-                        size='small'
-                        value={methods}
-                        onChange={(e) =>setMethods(e.target.value)}
-                    >
-                        {options.map((option) => (
-                            <MenuItem key={option.label} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <TextField
-                        variant='outlined'
-                        label="Enter URL API"
-                        id='outlined-basic'
-                        size='small'
-                        value={url}
-                        onChange={(e) =>setUrl(e.target.value)}
-                        sx={{
-                            width: 350,
-                            maxWidth: '100%'
-                        }}
-                    >
-                    </TextField>
-                    <TextField 
-                        style={{width: '200px'}}
-                        select
-                        label="Select music platform"
-                        id="outlined-select-musicPlatform"
-                        size='small'
-                        defaultValue="youtube"
-                        value={endpoint}
-                        onChange={(e) => setEndpoint(e.target.value)}
-                    >
-                        {musicPlatform.map((music) => (
-                            <MenuItem key={music.id} value={music.name}>
-                                {music.name}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <Button 
-                        variant='contained'
-                        type='submit'
-                        size="medium"
-                        endIcon={<SendIcon />}
-                    >
-                        Send
-                    </Button>
-                    </Stack>
-                    </form>
+                <Form 
+                    methods={methods} 
+                    setMethods={setMethods}
+                    url={url}
+                    setUrl={setUrl}
+                    music={music}
+                    setMusic={setMusic}
+                    onClickGetPost={onClickGetPost}
+                    onClickCreatePost={onClickCreatePost}
+                    // handleButtonClick={handleButtonClick}
+                />
                     <BottomNavigation
                         value={value}
                         showLabels
@@ -160,58 +117,30 @@ const App = () => {
                         <BottomNavigationAction label="Params" onClick={()=>setShow(!show)}/>
                         <BottomNavigationAction label="Authorization"onClick={() => setShow1(!show1)}/>
                     </BottomNavigation>
-                    {!show ? (
-                    <Stack direction="column" spacing={2}>
-                    <TextField
-                        style={{marginLeft: '170px'}}
-                        variant='outlined'
-                        label="Key"
-                        id="outlined-basic" 
-                        size='small'
-                        value={endpoint1}
-                        onChange={(e)=> setEndpoint1(e.target.value)}
-                        sx={{
-                            width: 250,
-                            maxWidth: '100%'
-                        }}
-                    >
-                    </TextField>
-                    <TextField
-                        style={{marginLeft: '170px'}}
-                        variant='outlined'
-                        label="Value"
-                        id="outlined-basic" 
-                        size='small'
-                        margin='normal'
-                        value={endpoint2}
-                        onChange={(e)=> setEndpoint2(e.target.value)}
-                        sx={{
-                            width: 250,
-                            maxWidth: '100%'
-                        }}
-                    >
-                    </TextField>
-                    </Stack>
-                    ): null}
-                    {!show1 ? (
-                    <Stack>
-                    <TextField
-                        style={{marginLeft: '170px'}}
-                        variant='outlined'
-                        label="Token"
-                        id="outlined-basic" 
-                        size='small'
-                        margin='normal'
-                        value={token}
-                        onChange={(e)=> setToken(e.target.value)}
-                        sx={{
-                            width: 350,
-                            maxWidth: '100%'
-                        }}
-                    >
-                    </TextField>
-                    </Stack>
-                    ): null}
+                   <Params 
+                        show={show} 
+                        endpoint1={endpoint1} 
+                        setEndpoint1={setEndpoint1} 
+                        endpoint2={endpoint2} 
+                        setEndpoint2={setEndpoint2}
+                        endpoint3={endpoint3}
+                        setEndpoint3={setEndpoint3}
+                        endpoint4={endpoint4}
+                        setEndpoint4={setEndpoint4}
+                        endpoint5={endpoint5}
+                        setEndpoint5={setEndpoint5}
+                        endpoint6={endpoint6}
+                        setEndpoint6={setEndpoint6}
+                        endpoint7={endpoint7}
+                        setEndpoint7={setEndpoint7}
+                        endpoint8={endpoint8}
+                        setEndpoint8={setEndpoint8}
+                    />
+                   <Authorization 
+                        show1={show1} 
+                        token={token} 
+                        setToken={setToken}
+                    />
                     <div>
                         {data ? (
                             <div><pre>{JSON.stringify(data,null,2)}</pre></div>
