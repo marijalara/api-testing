@@ -18,12 +18,19 @@ const Params = ({
     endpoint7,
     setEndpoint7,
     endpoint8,
-    setEndpoint8
+    setEndpoint8,
+    endpoint9,
+    setEndpoint9,
+    endpoint10,
+    setEndpoint10,
+    endpoint11,
+    setEndpoint11,
+    endpoint12,
+    setEndpoint12
 }) => {
   return (
     <div>
        {!show ? (
-
             <Grid container spacing={1} >
                 <Grid container direction="column" item xs={6} >
                 <Stack spacing={2} style={{marginTop: '22px'}}>
@@ -67,6 +74,28 @@ const Params = ({
                 margin='normal'
                 value={endpoint7}
                 onChange={(e)=> setEndpoint7(e.target.value)}
+            >
+            </TextField>
+            <TextField
+                style={{marginLeft: '170px'}}
+                variant='outlined'
+                label="Key"
+                id="outlined-basic" 
+                size='small'
+                margin='normal'
+                value={endpoint9}
+                onChange={(e)=> setEndpoint9(e.target.value)}
+            >
+            </TextField>
+            <TextField
+                style={{marginLeft: '170px'}}
+                variant='outlined'
+                label="Key"
+                id="outlined-basic" 
+                size='small'
+                margin='normal'
+                value={endpoint11}
+                onChange={(e)=> setEndpoint11(e.target.value)}
             >
             </TextField>
             </Stack>
@@ -117,10 +146,32 @@ const Params = ({
                 onChange={(e)=> setEndpoint8(e.target.value)}
             >
             </TextField>
+            <TextField
+                style={{marginLeft: '170px'}}
+                variant='outlined'
+                label="Value"
+                id="outlined-basic" 
+                size='small'
+                margin='normal'
+                value={endpoint10}
+                onChange={(e)=> setEndpoint10(e.target.value)}
+            >
+            </TextField>
+            <TextField
+                style={{marginLeft: '170px'}}
+                variant='outlined'
+                label="Value"
+                id="outlined-basic" 
+                size='small'
+                margin='normal'
+                value={endpoint12}
+                onChange={(e)=> setEndpoint12(e.target.value)}
+            >
+            </TextField>
             </Stack>
             </Grid>
             </Grid>
-            ): null}
+        ): null}
     </div>
   )
 }

@@ -2,28 +2,28 @@ import React from 'react';
 import { TextField, Stack, Button, MenuItem } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-const options=[
-    {
-        value: 'GET',
-        label: 'GET'
-    },
-    {
-        value: 'PUT',
-        label: 'PUT'
-    },
-    {
-        value: 'POST',
-        label: 'POST'
-    },
-    {
-        value: 'PATCH',
-        label: 'PATCH'
-    },
-    {
-        value: 'DELETE',
-        label: 'DELETE'
-    }
-]
+// const options=[
+//     {
+//         value: 'GET',
+//         label: 'GET'
+//     },
+//     {
+//         value: 'PUT',
+//         label: 'PUT'
+//     },
+//     {
+//         value: 'POST',
+//         label: 'POST'
+//     },
+//     {
+//         value: 'PATCH',
+//         label: 'PATCH'
+//     },
+//     {
+//         value: 'DELETE',
+//         label: 'DELETE'
+//     }
+// ]
 
 const musicPlatform=[
     {
@@ -37,14 +37,19 @@ const musicPlatform=[
     {
         id: 3,
         name: 'deezer'
+    },
+    {
+        id: 4,
+        name: 'shazam'
     }
 ]
 
-const Form = ({methods,handleButtonClick, setMethods, url, setUrl, music, setMusic, onClickGetPost, onClickCreatePost}) => {
+const Form = ({methods,setMethods, url, setUrl, music, setMusic, handleClickPost}) => {
 
     const handleSubmit=(e) => {
         e.preventDefault()
     }
+    
    
   return (
     <div>
@@ -52,18 +57,18 @@ const Form = ({methods,handleButtonClick, setMethods, url, setUrl, music, setMus
             <Stack direction="row" spacing={2}>
             <TextField 
                 style={{width: '155px', marginLeft: '170px'}}
-                select
-                label="Select methods"
+                
+                label="Methods"
                 id="outlined-select-options"
                 size='small'
                 value={methods}
                 onChange={(e) =>setMethods(e.target.value)}
             >
-                {options.map((option) => (
+                {/* {options.map((option) => (
                     <MenuItem key={option.label} value={option.value}>
                         {option.label}
                     </MenuItem>
-                ))}
+                ))} */}
             </TextField>
             <TextField
                 variant='outlined'
@@ -79,30 +84,26 @@ const Form = ({methods,handleButtonClick, setMethods, url, setUrl, music, setMus
             >
             </TextField>
             <TextField 
-                style={{width: '200px'}}
-                select
-                label="Select music platform"
-                id="outlined-select-musicPlatform"
-                size='small'
-                value={music}
-                onChange={(e) => setMusic(e.target.value)}
-            >
-                {musicPlatform.map((music) => (
-                    <MenuItem key={music.id} value={music.name}>
-                        {music.name}
-                    </MenuItem>
-                ))}
+            style={{width: '200px'}}
+            select
+            label="Select music platform"
+            id="outlined-select-musicPlatform"
+            size='small'
+            value={music}
+            onChange={(e) => setMusic(e.target.value)}
+        >
+            {musicPlatform.map((music) => (
+                <MenuItem key={music.id} value={music.name}>
+                    {music.name}
+                </MenuItem>
+            ))}
             </TextField>
             <Button 
                 variant='contained'
                 type='submit'
                 size="medium"
                 endIcon={<SendIcon />}
-                onClick={()=>{
-                    onClickGetPost()
-                    onClickCreatePost()
-                }}
-                // onClick={handleButtonClick}
+                onClick={handleClickPost}
             >
                 Send
             </Button>

@@ -8,8 +8,6 @@ import axios from 'axios';
 import Header from './Header';
 import Form from './Form';
 
-
-
 const App = () => {
     const [darkMode, setDarkMode]=useState(false)
     const [value, setValue]=useState(0)
@@ -22,40 +20,27 @@ const App = () => {
     const [endpoint6, setEndpoint6]=useState('')
     const [endpoint7, setEndpoint7]=useState('q')
     const [endpoint8, setEndpoint8]=useState('')
-    const [methods, setMethods]=useState('')
+    const [endpoint9, setEndpoint9]=useState('type')
+    const [endpoint10, setEndpoint10]=useState('')
+    const [endpoint11, setEndpoint11]=useState('term')
+    const [endpoint12, setEndpoint12]=useState('')
+    const [methods, setMethods]=useState('POST')
     const [url, setUrl]=useState('')
     const [token, setToken]=useState('')
     const [data, setData]=useState(null)
     const [show, setShow]=useState(true)
     const [show1, setShow1]=useState(true)
-    const [show2, setShow2]=useState(true)
     const [error, setError]=useState(null)
     
-
-    // const [selectedMethod, setSelectedMethod]=useState(null)
-    
-    
-   
-    const onClickGetPost=async() => {
-        const response=await axios.get(`${url}/${music}`,{
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            }
-        })
-        .then(response=> response.data)
-        .then(json=>json)
-        .catch(error=> setError(error)) 
-            setData({response})
-    }
-    
-    const onClickCreatePost=async() => {
-        const response1=await axios.post(`${url}/${music}`,{
+    const handleClickPost=async() => {
+        const response=await axios.post(`${url}/${music}`,{
                 type: `${endpoint2}`,
                 subType: `${endpoint4}`,
                 api: `${endpoint6}`,
                 params: {
-                    q: `${endpoint8}`
+                    q: `${endpoint8}`,
+                    term: `${endpoint11}`,
+                    type: `${endpoint10}`
                 }
             },
             {
@@ -65,19 +50,12 @@ const App = () => {
             }
         } 
         )
-        .then(response1 => response1.data)
+        .then(response => response.data)
         .then(json =>json)
         .catch(error=> setError(error))
-            setData({response1})
+            setData({response})
     }
-    // const handleButtonClick=() => {
-    //     if(selectedMethod==='get') {
-    //         onClickGetPost()
-    //     } else {
-    //         onClickCreatePost()
-    //     }
-    // }
-   
+  
     const theme= createTheme({
         palette: {
             mode: darkMode ? 'dark' : 'light'
@@ -103,9 +81,7 @@ const App = () => {
                     setUrl={setUrl}
                     music={music}
                     setMusic={setMusic}
-                    onClickGetPost={onClickGetPost}
-                    onClickCreatePost={onClickCreatePost}
-                    // handleButtonClick={handleButtonClick}
+                    handleClickPost={handleClickPost}
                 />
                     <BottomNavigation
                         value={value}
@@ -114,7 +90,7 @@ const App = () => {
                             setValue(newValue)
                         }}
                     >
-                        <BottomNavigationAction label="Params" onClick={()=>setShow(!show)}/>
+                        <BottomNavigationAction label="Body Params" onClick={()=>setShow(!show)}/>
                         <BottomNavigationAction label="Authorization"onClick={() => setShow1(!show1)}/>
                     </BottomNavigation>
                    <Params 
@@ -135,6 +111,14 @@ const App = () => {
                         setEndpoint7={setEndpoint7}
                         endpoint8={endpoint8}
                         setEndpoint8={setEndpoint8}
+                        endpoint9={endpoint9}
+                        setEndpoint9={setEndpoint9}
+                        endpoint10={endpoint10}
+                        setEndpoint10={setEndpoint10}
+                        endpoint11={endpoint11}
+                        setEndpoint11={setEndpoint11}
+                        endpoint12={endpoint12}
+                        setEndpoint12={setEndpoint12}
                     />
                    <Authorization 
                         show1={show1} 
