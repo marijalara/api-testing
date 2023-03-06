@@ -33,16 +33,21 @@ const App = () => {
     const [error, setError]=useState(null)
     
     const handleClickPost=async() => {
-        const response=await axios.post(`${url}/${music}`,{
-                type: `${endpoint2}`,
-                subType: `${endpoint4}`,
-                api: `${endpoint6}`,
-                params: {
-                    q: `${endpoint8}`,
-                    term: `${endpoint11}`,
-                    type: `${endpoint10}`
-                }
-            },
+        let params={
+            type: `${endpoint2}`,
+            subType: `${endpoint4}`,
+            api: `${endpoint6}`
+        }
+        if(music==='youtube') {
+            params={...params, params:{ q: `${endpoint8}`}}
+        } else if(music==='spotify') {
+            params={...params, params:{ q: `${endpoint8}`, type: `${endpoint10}`} }
+        } else if(music==='deezer') {
+            params={...params, params: {q: `${endpoint8}` }}
+        } else if(music==='shazam') {
+            params={...params, params: {term: `${endpoint12}`}}
+        }
+        const response=await axios.post(`${url}/${music}`,params,
             {
             headers: {
                 'Authorization': `Bearer ${token}`,

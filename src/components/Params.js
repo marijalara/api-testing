@@ -101,7 +101,7 @@ const Params = ({
             </Stack>
             </Grid>
             <Grid container direction="column" item xs={6}>
-                <Stack spacing={2}>
+            <Stack spacing={2}>
             <TextField
                 style={{marginLeft: '170px'}}
                 variant='outlined'

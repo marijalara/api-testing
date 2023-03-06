@@ -57,7 +57,6 @@ const Form = ({methods,setMethods, url, setUrl, music, setMusic, handleClickPost
             <Stack direction="row" spacing={2}>
             <TextField 
                 style={{width: '155px', marginLeft: '170px'}}
-                
                 label="Methods"
                 id="outlined-select-options"
                 size='small'
