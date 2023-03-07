@@ -2,29 +2,6 @@ import React from 'react';
 import { TextField, Stack, Button, MenuItem } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-// const options=[
-//     {
-//         value: 'GET',
-//         label: 'GET'
-//     },
-//     {
-//         value: 'PUT',
-//         label: 'PUT'
-//     },
-//     {
-//         value: 'POST',
-//         label: 'POST'
-//     },
-//     {
-//         value: 'PATCH',
-//         label: 'PATCH'
-//     },
-//     {
-//         value: 'DELETE',
-//         label: 'DELETE'
-//     }
-// ]
-
 const musicPlatform=[
     {
         id: 1,
@@ -44,7 +21,7 @@ const musicPlatform=[
     }
 ]
 
-const Form = ({methods,setMethods, url, setUrl, music, setMusic, handleClickPost}) => {
+const Form = ({methods,setMethods,selected, setSelected, url, setUrl, handleClickPost}) => {
 
     const handleSubmit=(e) => {
         e.preventDefault()
@@ -62,12 +39,7 @@ const Form = ({methods,setMethods, url, setUrl, music, setMusic, handleClickPost
                 size='small'
                 value={methods}
                 onChange={(e) =>setMethods(e.target.value)}
-            >
-                {/* {options.map((option) => (
-                    <MenuItem key={option.label} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))} */}
+            >    
             </TextField>
             <TextField
                 variant='outlined'
@@ -88,8 +60,8 @@ const Form = ({methods,setMethods, url, setUrl, music, setMusic, handleClickPost
             label="Select music platform"
             id="outlined-select-musicPlatform"
             size='small'
-            value={music}
-            onChange={(e) => setMusic(e.target.value)}
+            value={selected}
+            onChange={(e) => setSelected(e.target.value)}
         >
             {musicPlatform.map((music) => (
                 <MenuItem key={music.id} value={music.name}>

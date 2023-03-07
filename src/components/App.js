@@ -11,7 +11,6 @@ import Form from './Form';
 const App = () => {
     const [darkMode, setDarkMode]=useState(false)
     const [value, setValue]=useState(0)
-    const [music, setMusic]=useState('')
     const [endpoint1, setEndpoint1]=useState('Type')
     const [endpoint2, setEndpoint2]=useState('')
     const [endpoint3, setEndpoint3]=useState('subType')
@@ -31,6 +30,8 @@ const App = () => {
     const [show, setShow]=useState(true)
     const [show1, setShow1]=useState(true)
     const [error, setError]=useState(null)
+    const [selected, setSelected]=useState('')
+    
     
     const handleClickPost=async() => {
         let params={
@@ -38,16 +39,16 @@ const App = () => {
             subType: `${endpoint4}`,
             api: `${endpoint6}`
         }
-        if(music==='youtube') {
+        if(selected==='youtube') {
             params={...params, params:{ q: `${endpoint8}`}}
-        } else if(music==='spotify') {
+        } else if(selected==='spotify') {
             params={...params, params:{ q: `${endpoint8}`, type: `${endpoint10}`} }
-        } else if(music==='deezer') {
+        } else if(selected==='deezer') {
             params={...params, params: {q: `${endpoint8}` }}
-        } else if(music==='shazam') {
+        } else if(selected==='shazam') {
             params={...params, params: {term: `${endpoint12}`}}
         }
-        const response=await axios.post(`${url}/${music}`,params,
+        const response=await axios.post(`${url}/${selected}`,params,
             {
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -84,9 +85,9 @@ const App = () => {
                     setMethods={setMethods}
                     url={url}
                     setUrl={setUrl}
-                    music={music}
-                    setMusic={setMusic}
                     handleClickPost={handleClickPost}
+                    selected={selected}
+                    setSelected={setSelected}
                 />
                     <BottomNavigation
                         value={value}
@@ -124,6 +125,7 @@ const App = () => {
                         setEndpoint11={setEndpoint11}
                         endpoint12={endpoint12}
                         setEndpoint12={setEndpoint12}
+                        selected={selected}
                     />
                    <Authorization 
                         show1={show1} 
