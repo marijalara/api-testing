@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField, Stack, Button, MenuItem } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import Categories from './Categories';
 
 const musicPlatform=[
     {
@@ -21,7 +22,7 @@ const musicPlatform=[
     }
 ]
 
-const Form = ({methods,setMethods,selected, setSelected, url, setUrl, handleClickPost}) => {
+const Form = ({selected, setSelected, handleClickPost}) => {
 
     const handleSubmit=(e) => {
         e.preventDefault()
@@ -32,30 +33,29 @@ const Form = ({methods,setMethods,selected, setSelected, url, setUrl, handleClic
     <div>
         <form onSubmit={handleSubmit}>
             <Stack direction="row" spacing={2}>
-            <TextField 
+            {/* <TextField 
                 style={{width: '155px', marginLeft: '170px'}}
-                label="Methods"
+                label="Method"
                 id="outlined-select-options"
                 size='small'
-                value={methods}
-                onChange={(e) =>setMethods(e.target.value)}
+                value={method}
             >    
-            </TextField>
-            <TextField
+            </TextField> */}
+            {/* <TextField
                 variant='outlined'
                 label="Enter URL API"
                 id='outlined-basic'
                 size='small'
                 value={url}
-                onChange={(e) =>setUrl(e.target.value)}
                 sx={{
                     width: 350,
                     maxWidth: '100%'
                 }}
             >
-            </TextField>
+            </TextField> */}
+            <Categories />
             <TextField 
-            style={{width: '200px'}}
+            style={{width: '200px', justifyContent:'center'}}
             select
             label="Select music platform"
             id="outlined-select-musicPlatform"
