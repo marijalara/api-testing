@@ -18,29 +18,29 @@ const Categories = () => {
             setFilteredApis(filtered)
         }
     }, [selectedCategory])
-  return (
-    <div>
-       <TextField
-            style={{justifyContent: 'center', justifyItems: 'center', marginLeft: '240px'}}
-            variant='outlined'
-            label="Select a category"
-            id='outlined-basic'
-            size='small'
-            select
-            value={selectedCategory}
-            sx={{
-                width: 250,
-                maxWidth: '100%'
-            }}
-        >
-            {filteredApis.map((cate) => (
-                <MenuItem key={cate.id} value={cate.category}>
-                {cate.category}
-                </MenuItem>
-            ))}
-        </TextField>
-    </div>
-  )
+    return (
+        <div>
+            <TextField
+                style={{justifyContent: 'center', justifyItems: 'center', marginLeft: '240px'}}
+                variant='outlined'
+                label="Select a category"
+                id='outlined-basic'
+                size='small'
+                select
+                value={selectedCategory}
+                sx={{
+                    width: 250,
+                    maxWidth: '100%'
+                }}
+            >
+                {filteredApis.map((cate) => (
+                    <MenuItem key={cate.id} value={cate.category}>
+                    {cate.category}
+                    </MenuItem>
+                ))}
+            </TextField>
+        </div>
+    )
 }
 
 export default Categories

@@ -3,18 +3,10 @@ import { TextField, Stack, Grid } from '@mui/material';
 
 const Params = ({
     show,
-    endpoint3, 
-    setEndpoint3,
-    endpoint5,
-    setEndpoint5,
-    endpoint6,
-    setEndpoint6,
+    apiValue1,
     selected,
-    type,
     music,
-    apiParams,
-    nesto
-    
+    apiValue
 }) => {
   return (
     <div>
@@ -26,9 +18,12 @@ const Params = ({
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input"
                     size='small'
-                    value={type}
+                    defaultValue="Type"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 </Stack>
@@ -55,21 +50,25 @@ const Params = ({
                         style={{marginLeft: '170px'}}
                         variant='outlined'
                         label="Key"
-                        id="outlined-basic" 
+                        id="outlined-read-only-input"
                         size='small'
-                        value={endpoint3} 
-                        onChange={(e)=> setEndpoint3(e.target.value)}
+                        defaultValue="subType"
+                        InputProps={{
+                            readOnly: true
+                        }}
                     >
                     </TextField>
                     <TextField
                         style={{marginLeft: '170px'}}
                         variant='outlined'
                         label="Key"
-                        id="outlined-basic" 
+                        id="outlined-read-only-input"
                         size='small'
                         margin='normal' 
-                        value={endpoint5} 
-                        onChange={(e)=> setEndpoint5(e.target.value)}
+                        defaultValue="api"
+                        InputProps={{
+                            readOnly: true
+                        }}
                     >
                     </TextField>
                     </Stack>
@@ -84,7 +83,6 @@ const Params = ({
                         size='small'
                         margin='normal'
                         value={selected}
-                        // onChange={(e)=> setEndpoint4(e.target.value)}
                     >
                     </TextField>
                     <TextField
@@ -94,8 +92,7 @@ const Params = ({
                         id="outlined-basic" 
                         size='small'
                         margin='normal'
-                        value={endpoint6}
-                        onChange={(e)=> setEndpoint6(e.target.value)}
+                        value={apiValue1}
                     >
                     </TextField>
                     </Stack>
@@ -110,21 +107,25 @@ const Params = ({
                         style={{marginLeft: '170px'}}
                         variant='outlined'
                         label="Key"
-                        id="outlined-basic" 
+                        id="outlined-read-only-input"
                         size='small'
-                        value={endpoint3} 
-                        onChange={(e)=> setEndpoint3(e.target.value)}
+                        defaultValue="subType"
+                        InputProps={{
+                            readOnly: true
+                        }}
                     >
                     </TextField>
                     <TextField
                         style={{marginLeft: '170px'}}
                         variant='outlined'
                         label="Key"
-                        id="outlined-basic" 
+                        id="outlined-read-only-input"
                         size='small'
                         margin='normal' 
-                        value={endpoint5} 
-                        onChange={(e)=> setEndpoint5(e.target.value)}
+                        defaultValue="api"
+                        InputProps={{
+                            readOnly: true
+                        }}
                     >
                     </TextField>
                     </Stack>
@@ -139,7 +140,6 @@ const Params = ({
                         size='small'
                         margin='normal'
                         value={selected}
-                        
                     >
                     </TextField>
                     <TextField
@@ -149,8 +149,7 @@ const Params = ({
                         id="outlined-basic" 
                         size='small'
                         margin='normal'
-                        value={endpoint6}
-                        onChange={(e)=> setEndpoint6(e.target.value)}
+                        value={apiValue}
                     >
                     </TextField>
                     </Stack>
@@ -165,21 +164,25 @@ const Params = ({
                         style={{marginLeft: '170px'}}
                         variant='outlined'
                         label="Key"
-                        id="outlined-basic" 
+                        id="outlined-read-only-input"
                         size='small'
-                        value={endpoint3} 
-                        onChange={(e)=> setEndpoint3(e.target.value)}
+                        defaultValue="subType"
+                        InputProps={{
+                            readOnly: true
+                        }}
                     >
                     </TextField>
                     <TextField
                         style={{marginLeft: '170px'}}
                         variant='outlined'
                         label="Key"
-                        id="outlined-basic" 
+                        id="outlined-read-only-input"
                         size='small'
                         margin='normal' 
-                        value={endpoint5} 
-                        onChange={(e)=> setEndpoint5(e.target.value)}
+                        defaultValue="api"
+                        InputProps={{
+                            readOnly: true
+                        }}
                     >
                     </TextField>
                     </Stack>
@@ -203,8 +206,7 @@ const Params = ({
                         id="outlined-basic" 
                         size='small'
                         margin='normal'
-                        value={endpoint6}
-                        onChange={(e)=> setEndpoint6(e.target.value)}
+                        value={apiValue1}
                     >
                     </TextField>
                     </Stack>

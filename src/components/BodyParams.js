@@ -4,18 +4,12 @@ import { TextField, Stack, Grid } from '@mui/material';
 const BodyParams = ({
     show2, 
     selected, 
-    endpoint7, 
-    setEndpoint7,
     endpoint8, 
     setEndpoint8,
-    endpoint9,
-    setEndpoint9,
     endpoint10,
     setEndpoint10,
-    endpoint11,
-    setEndpoint11,
-    endpoint12,
-    setEndpoint12,
+    endpoint3,
+    setEndpoint3,
     endpoint,
     setEndpoint,
     endpoint1,
@@ -24,16 +18,16 @@ const BodyParams = ({
     setEndpoint2,
     endpoint4,
     setEndpoint4,
-    endpoint13,
-    setEndpoint13,
-    endpoint14,
-    setEndpoint14,
-    endpoint15,
-    setEndpoint15,
-    endpoint16,
-    setEndpoint16,
-    endpoint17,
-    setEndpoint17
+    endpoint5,
+    setEndpoint5,
+    endpoint6,
+    setEndpoint6,
+    endpoint7,
+    setEndpoint7,
+    endpoint9,
+    setEndpoint9,
+    endpoint11,
+    setEndpoint11
 }) => {
   return (
     <div>
@@ -47,41 +41,52 @@ const BodyParams = ({
                 style={{marginLeft: '170px'}}
                 variant='outlined'
                 label="Key"
-                id="outlined-basic" 
+                id="outlined-read-only-input" 
                 size='small'
                 margin='normal'
-                value={endpoint7}
-                onChange={(e)=> setEndpoint7(e.target.value)}
+                defaultValue="q"
+                InputProps={{
+                    readOnly: true
+                }}
             >
             </TextField>
             <TextField
                 style={{marginLeft: '170px'}}
                 variant='outlined'
                 label="Key"
-                id="outlined-basic" 
+                id="outlined-read-only-input" 
                 size='small'
                 margin='normal'
                 defaultValue="regionCode"
+                InputProps={{
+                    readOnly: true
+                }}
             >
             </TextField>
             <TextField
                 style={{marginLeft: '170px'}}
                 variant='outlined'
                 label="Key"
-                id="outlined-basic" 
+                id="outlined-read-only-input" 
                 size='small'
                 margin='normal'
                 defaultValue="maxResults"
+                InputProps={{
+                    readOnly: true
+                }}
             >
             </TextField>
             <TextField
                 style={{marginLeft: '170px'}}
                 variant='outlined'
                 label="Key"
-                id="outlined-basic" 
+                id="outlined-read-only-input" 
                 size='small'
                 margin='normal'
                 defaultValue="type"
+                InputProps={{
+                    readOnly: true
+                }}
             >
             </TextField>
             </Stack>
@@ -148,31 +153,39 @@ const BodyParams = ({
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
-                    value={endpoint7}
-                    onChange={(e)=> setEndpoint7(e.target.value)}
+                    defaultValue="q"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 <TextField
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
                     defaultValue="strict"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 <TextField
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
                     defaultValue="order"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 </Stack>
@@ -211,8 +224,8 @@ const BodyParams = ({
                     size='small'
                     margin='normal'
                     helperText="Example: TRACK_ASC, TRACK_DESC,ARTIST_ASC, ARTIST_DESC"
-                    value={endpoint13}
-                    onChange={(e) => setEndpoint13(e.target.value)}
+                    value={endpoint5}
+                    onChange={(e) => setEndpoint5(e.target.value)}
                 >
                 </TextField>
                 </Stack>
@@ -228,42 +241,52 @@ const BodyParams = ({
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
-                    value={endpoint7}
-                    // onChange={(e)=> setEndpoint7(e.target.value)}
+                    defaultValue="q"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 <TextField
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
-                    value={endpoint9}
-                    // onChange={(e)=> setEndpoint9(e.target.value)}
+                    defaultValue="type"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 <TextField
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
                     defaultValue="limit"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 <TextField
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
                     defaultValue="include_external"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 </Stack>
@@ -301,9 +324,9 @@ const BodyParams = ({
                     id="outlined-basic" 
                     size='small'
                     margin='normal'
-                    helperText="Example: Maximum nuber of results"
-                    value={endpoint16}
-                    onChange={(e) => setEndpoint16(e.target.value)}
+                    helperText="Example: Min number of results"
+                    value={endpoint9}
+                    onChange={(e) => setEndpoint9(e.target.value)}
                 >
                 </TextField>
                 <TextField
@@ -314,8 +337,8 @@ const BodyParams = ({
                     size='small'
                     margin='normal'
                     helperText="Example: Possible values: audio"
-                    value={endpoint17}
-                    onChange={(e) => setEndpoint17(e.target.value)}
+                    value={endpoint11}
+                    onChange={(e) => setEndpoint11(e.target.value)}
                 >
                 </TextField>
                 </Stack>
@@ -330,31 +353,39 @@ const BodyParams = ({
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input" 
                     size='small'
                     margin='normal'
-                    value={endpoint11}
-                    onChange={(e)=> setEndpoint11(e.target.value)}
+                    defaultValue="term"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 <TextField
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input"
                     size='small'
                     margin='normal'
                     defaultValue="locale"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 <TextField
                     style={{marginLeft: '170px'}}
                     variant='outlined'
                     label="Key"
-                    id="outlined-basic" 
+                    id="outlined-read-only-input"
                     size='small'
                     margin='normal'
                     defaultValue="limit"
+                    InputProps={{
+                        readOnly: true
+                    }}
                 >
                 </TextField>
                 </Stack>
@@ -369,8 +400,8 @@ const BodyParams = ({
                     size='small'
                     margin='normal'
                     helperText="Example: Full name of songs or artists"
-                    value={endpoint12}
-                    onChange={(e)=> setEndpoint12(e.target.value)}
+                    value={endpoint3}
+                    onChange={(e)=> setEndpoint3(e.target.value)}
                 >
                 </TextField> 
                 <TextField
@@ -381,8 +412,8 @@ const BodyParams = ({
                     size='small'
                     margin='normal'
                     helperText="Example: en-US"
-                    value={endpoint14}
-                    onChange={(e) => setEndpoint14(e.target.value)}
+                    value={endpoint6}
+                    onChange={(e) => setEndpoint6(e.target.value)}
                 >
                 </TextField> 
                 <TextField
@@ -393,8 +424,8 @@ const BodyParams = ({
                     size='small'
                     margin='normal'
                     helperText="Example: Maximum fixed at 5"
-                    value={endpoint15}
-                    onChange={(e) => setEndpoint15(e.target.value)}
+                    value={endpoint7}
+                    onChange={(e) => setEndpoint7(e.target.value)}
                 >
                 </TextField> 
                 </Stack>

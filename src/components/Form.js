@@ -28,31 +28,10 @@ const Form = ({selected, setSelected, handleClickPost}) => {
         e.preventDefault()
     }
     
-   
   return (
     <div>
         <form onSubmit={handleSubmit}>
             <Stack direction="row" spacing={2}>
-            {/* <TextField 
-                style={{width: '155px', marginLeft: '170px'}}
-                label="Method"
-                id="outlined-select-options"
-                size='small'
-                value={method}
-            >    
-            </TextField> */}
-            {/* <TextField
-                variant='outlined'
-                label="Enter URL API"
-                id='outlined-basic'
-                size='small'
-                value={url}
-                sx={{
-                    width: 350,
-                    maxWidth: '100%'
-                }}
-            >
-            </TextField> */}
             <Categories />
             <TextField 
             style={{width: '200px', justifyContent:'center'}}
