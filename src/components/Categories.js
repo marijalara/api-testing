@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TextField, MenuItem } from '@mui/material';
 
 const apis=[
     {
         id: 1,
         category: 'Music'
+    }, 
+    {
+        id: 2, 
+        category: 'Info'
     }
 ]
 
-const Categories = () => {
-    const [selectedCategory, setSelectedCategory]=useState('Music')
-    const [filteredApis, setFilteredApis]=useState(apis)
-
-    useEffect(() => {
-        if(selectedCategory==='Music') {
-            const filtered=apis.filter(api=> api.category===selectedCategory)
-            setFilteredApis(filtered)
-        }
-    }, [selectedCategory])
+const Categories = ({selectedCategory, setSelectedCategory }) => {
     return (
         <div>
             <TextField
@@ -28,12 +23,13 @@ const Categories = () => {
                 size='small'
                 select
                 value={selectedCategory}
+                onChange={(e) =>setSelectedCategory(e.target.value)}
                 sx={{
                     width: 250,
                     maxWidth: '100%'
                 }}
             >
-                {filteredApis.map((cate) => (
+                {apis.map((cate) => (
                     <MenuItem key={cate.id} value={cate.category}>
                     {cate.category}
                     </MenuItem>

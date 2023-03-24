@@ -2,6 +2,7 @@ import React from 'react';
 import { TextField, Stack, Button, MenuItem } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Categories from './Categories';
+import InfoService from './InfoService';
 
 const musicPlatform=[
     {
@@ -22,7 +23,7 @@ const musicPlatform=[
     }
 ]
 
-const Form = ({selected, setSelected, handleClickPost}) => {
+const Form = ({selected, handleClick, selectedCategory, selected1, setSelected1, setSelected, setSelectedCategory}) => {
 
     const handleSubmit=(e) => {
         e.preventDefault()
@@ -32,7 +33,7 @@ const Form = ({selected, setSelected, handleClickPost}) => {
     <div>
         <form onSubmit={handleSubmit}>
             <Stack direction="row" spacing={2}>
-            <Categories />
+            <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
             <TextField 
             style={{width: '200px', justifyContent:'center'}}
             select
@@ -48,12 +49,13 @@ const Form = ({selected, setSelected, handleClickPost}) => {
                 </MenuItem>
             ))}
             </TextField>
+            <InfoService selected1={selected1} setSelectedCategory={setSelectedCategory} setSelected1={setSelected1}/>
             <Button 
                 variant='contained'
                 type='submit'
                 size="medium"
                 endIcon={<SendIcon />}
-                onClick={handleClickPost}
+                onClick={handleClick}
             >
                 Send
             </Button>

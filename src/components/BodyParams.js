@@ -27,7 +27,12 @@ const BodyParams = ({
     endpoint9,
     setEndpoint9,
     endpoint11,
-    setEndpoint11
+    setEndpoint11,
+    selected1,
+    endpoint12,
+    setEndpoint12,
+    endpoint13,
+    setEndpoint13
 }) => {
   return (
     <div>
@@ -432,6 +437,80 @@ const BodyParams = ({
                 </Grid>
                 </>
             ):null}
+            {selected1==='facts' ? (
+                <>
+                <Grid container direction="column" item xs={6}>
+                <Stack spacing={5} style={{marginTop: '23px'}}>
+                <TextField
+                    style={{marginLeft: '170px'}}
+                    variant='outlined'
+                    label="Key"
+                    id="outlined-read-only-input" 
+                    size='small'
+                    margin='normal'
+                    defaultValue="limit"
+                    InputProps={{
+                        readOnly: true
+                    }}
+                >
+                </TextField>
+                </Stack>
+                </Grid>
+                <Grid container direction="column" item xs={6}>
+                <Stack spacing={2} style={{marginTop: '22px'}}>
+                <TextField
+                    style={{marginLeft: '170px'}}
+                    variant='outlined'
+                    label="Value"
+                    id="outlined-basic" 
+                    size='small'
+                    margin='normal'
+                    helperText="Example: Must be between 1 and 30"
+                    value={endpoint12}
+                    onChange={(e) => setEndpoint12(e.target.value)}
+                >
+                </TextField> 
+                </Stack>
+                </Grid>
+                </>
+            ): null}
+            {selected1==='jokes' ? (
+                <>
+                <Grid container direction="column" item xs={6}>
+                <Stack spacing={5} style={{marginTop: '23px'}}>
+                <TextField
+                    style={{marginLeft: '170px'}}
+                    variant='outlined'
+                    label="Key"
+                    id="outlined-read-only-input" 
+                    size='small'
+                    margin='normal'
+                    defaultValue="limit"
+                    InputProps={{
+                        readOnly: true
+                    }}
+                >
+                </TextField>
+                </Stack>
+                </Grid>
+                <Grid container direction="column" item xs={6}>
+                <Stack spacing={2} style={{marginTop: '22px'}}>
+                <TextField
+                    style={{marginLeft: '170px'}}
+                    variant='outlined'
+                    label="Value"
+                    id="outlined-basic" 
+                    size='small'
+                    margin='normal'
+                    helperText="Example: Must be between 1 and 30"
+                    value={endpoint13}
+                    onChange={(e) => setEndpoint13(e.target.value)}
+                >
+                </TextField> 
+                </Stack>
+                </Grid>
+                </>
+                ): null}
             </Grid>
         ): null}
     </div>

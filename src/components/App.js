@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Switch, FormControlLabel, BottomNavigation, BottomNavigationAction, Container } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import Params from './Params';
 import Authorization from './Authorization';
 import axios from 'axios';
 import Header from './Header';
@@ -19,7 +18,6 @@ const App = () => {
     const [endpoint3, setEndpoint3]=useState('')
     const [token, setToken]=useState('')
     const [data, setData]=useState(null)
-    const [show, setShow]=useState(true)
     const [show1, setShow1]=useState(true)
     const [show2, setShow2]=useState(true)
     const [error, setError]=useState(null)
@@ -33,10 +31,15 @@ const App = () => {
     const [endpoint7, setEndpoint7]=useState('5')
     const [endpoint9, setEndpoint9]=useState('20')
     const [endpoint11, setEndpoint11]=useState('audio')
+    const [endpoint12, setEndpoint12]=useState('')
+    const [endpoint13, setEndpoint13]=useState('')
+    const [selected1, setSelected1]=useState('')
+    const [selectedCategory, setSelectedCategory]=useState('')
     
     const url="https://connectic-plus.herokuapp.com"
     const method='POST'
     const music='Music'
+    const info='Info'
     
     const handleClickPost=async() => {
         let params={
@@ -44,13 +47,13 @@ const App = () => {
             subType: `${selected}`
         }
         
-        if(selected==='youtube') {
+        if(selected==='youtube' && selectedCategory===music) {
             params={...params, api: `${apiValue1}`, params:{ q: `${endpoint8}`, regionCode: `${endpoint}`, maxResults: `${endpoint1}`, type: `${endpoint2}` }}
-        } else if(selected==='spotify') {
+        } else if(selected==='spotify' && selectedCategory===music) {
             params={...params, api: `${apiValue}`, params:{ q: `${endpoint8}`, type: `${endpoint10}`} }
-        } else if(selected==='deezer') {
+        } else if(selected==='deezer' && selectedCategory===music) {
             params={...params, api: `${apiValue1}`, params: {q: `${endpoint8}`, strict: `${endpoint4}`, order: `${endpoint5}` }}
-        } else if(selected==='shazam') {
+        } else if(selected==='shazam' && selectedCategory===music) {
             params={...params, api: `${apiValue1}`, params: {term: `${endpoint3}`, locale: `${endpoint6}`, limit: `${endpoint7}`}}
         }
         const response=await axios.post(`${url}/${selected}`,params,
@@ -65,6 +68,38 @@ const App = () => {
         .then(json =>json)
         .catch(error=> setError(error))
             setData({response})
+    }
+
+    const handleClickFiJ=async() => {
+        let params={
+            type: 'info',
+            subType: 'factsjokes'
+        }
+        if(selected1==='facts' && selectedCategory===info) {
+            params={...params, api: `${selected1}`, params: {limit:`${endpoint12}`}}
+        } else if(selected1==='jokes' && selectedCategory===info) {
+            params={...params, api: `${selected1}`, params: {limit: `${endpoint13}` }}
+        }
+        const response1=await axios.post(`${url}/factsjokes`,params,
+            {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        } 
+        )
+        .then(response1 => response1.data)
+        .then(json =>json)
+        .catch(error=> setError(error))
+            setData({response1})
+    }
+
+    const handleClick=() => {
+        if(selectedCategory===music) {
+            handleClickPost()
+        } else if(selectedCategory===info) {
+            handleClickFiJ()
+        }
     }
   
     const theme= createTheme({
@@ -84,13 +119,21 @@ const App = () => {
             />
             <div className='app'>
                 <Header />
-                <Container style={{maxWidth: '1000px'}}>
+                <Container style={{maxWidth: '1200px'}}>
                 <Form 
                     method={method} 
                     url={url}
                     handleClickPost={handleClickPost}
                     selected={selected}
                     setSelected={setSelected}
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
+                    setData={setData}
+                    token={token}
+                    setError={setError}
+                    selected1={selected1}
+                    setSelected1={setSelected1}
+                    handleClick={handleClick}
                 />
                     <BottomNavigation
                         value={value}
@@ -99,19 +142,9 @@ const App = () => {
                             setValue(newValue)
                         }}
                     >
-                        <BottomNavigationAction label="Params" onClick={()=>setShow(!show)}/>
                         <BottomNavigationAction label="Authorization"onClick={() => setShow1(!show1)}/>
                         <BottomNavigationAction label="Body Params" onClick={() =>setShow2(!show2)} />
                     </BottomNavigation>
-                   <Params 
-                        show={show} 
-                        music={music}
-                        selected={selected}
-                        apiValue1={apiValue1}
-                        setApiValue1={setApiValue1}
-                        apiValue={apiValue}
-                        setApiValue={setApiValue}
-                    />
                    <Authorization 
                         show1={show1} 
                         token={token} 
@@ -144,6 +177,11 @@ const App = () => {
                         setEndpoint9={setEndpoint9}
                         endpoint11={endpoint11}
                         setEndpoint11={setEndpoint11}
+                        selected1={selected1}
+                        endpoint12={endpoint12}
+                        setEndpoint12={setEndpoint12}
+                        endpoint13={endpoint13}
+                        setEndpoint13={setEndpoint13}
                     />
                     <div>
                         {data ? (
