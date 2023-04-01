@@ -18,7 +18,7 @@ const Categories = ({selectedCategory, setSelectedCategory }) => {
             <TextField
                 style={{justifyContent: 'center', justifyItems: 'center', marginLeft: '240px'}}
                 variant='outlined'
-                label="Select a category"
+                label="Select type"
                 id='outlined-basic'
                 size='small'
                 select

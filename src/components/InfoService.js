@@ -18,14 +18,14 @@ const InfoService = ({selected1, setSelected1}) => {
       <TextField
         style={{justifyContent: 'center'}}
         variant='outlined'
-        label="Select a info"
+        label="Select subType"
         id='outlined-basic'
         size='small'
         select
         value={selected1}
         onChange={(e) => setSelected1(e.target.value)}
         sx={{
-            width: 150,
+            width: 170,
             maxWidth: '100%'
         }}
       >
@@ -35,6 +35,7 @@ const InfoService = ({selected1, setSelected1}) => {
                 </MenuItem>
             ))}
       </TextField>
+    
     </div>
   )
 }

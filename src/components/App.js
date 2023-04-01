@@ -35,6 +35,7 @@ const App = () => {
     const [endpoint13, setEndpoint13]=useState('')
     const [selected1, setSelected1]=useState('')
     const [selectedCategory, setSelectedCategory]=useState('')
+    const [selectedSubType, setSelectedSubType]=useState('')
     
     const url="https://connectic-plus.herokuapp.com"
     const method='POST'
@@ -134,6 +135,10 @@ const App = () => {
                     selected1={selected1}
                     setSelected1={setSelected1}
                     handleClick={handleClick}
+                    selectedSubType={selectedSubType}
+                    setSelectedSubType={setSelectedSubType}
+                    music={music}
+                    info={info}
                 />
                     <BottomNavigation
                         value={value}
