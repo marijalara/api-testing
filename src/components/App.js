@@ -33,10 +33,8 @@ const App = () => {
     const [endpoint11, setEndpoint11]=useState('audio')
     const [endpoint12, setEndpoint12]=useState('')
     const [endpoint13, setEndpoint13]=useState('')
-    const [selected1, setSelected1]=useState('')
     const [selectedCategory, setSelectedCategory]=useState('')
-    const [selectedSubType, setSelectedSubType]=useState('')
-    
+
     const url="https://connectic-plus.herokuapp.com"
     const method='POST'
     const music='Music'
@@ -76,10 +74,10 @@ const App = () => {
             type: 'info',
             subType: 'factsjokes'
         }
-        if(selected1==='facts' && selectedCategory===info) {
-            params={...params, api: `${selected1}`, params: {limit:`${endpoint12}`}}
-        } else if(selected1==='jokes' && selectedCategory===info) {
-            params={...params, api: `${selected1}`, params: {limit: `${endpoint13}` }}
+        if(selected==='facts' && selectedCategory===info) {
+            params={...params, api: `${selected}`, params: {limit:`${endpoint12}`}}
+        } else if(selected==='jokes' && selectedCategory===info) {
+            params={...params, api: `${selected}`, params: {limit: `${endpoint13}` }}
         }
         const response1=await axios.post(`${url}/factsjokes`,params,
             {
@@ -132,11 +130,7 @@ const App = () => {
                     setData={setData}
                     token={token}
                     setError={setError}
-                    selected1={selected1}
-                    setSelected1={setSelected1}
                     handleClick={handleClick}
-                    selectedSubType={selectedSubType}
-                    setSelectedSubType={setSelectedSubType}
                     music={music}
                     info={info}
                 />
@@ -182,7 +176,6 @@ const App = () => {
                         setEndpoint9={setEndpoint9}
                         endpoint11={endpoint11}
                         setEndpoint11={setEndpoint11}
-                        selected1={selected1}
                         endpoint12={endpoint12}
                         setEndpoint12={setEndpoint12}
                         endpoint13={endpoint13}

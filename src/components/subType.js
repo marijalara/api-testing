@@ -1,48 +1,41 @@
 import React from 'react';
 import { TextField, MenuItem } from '@mui/material';
-import MusicPlatform from './MusicPlatform';
-import InfoService from './InfoService';
+import {musicPlatform} from "./Data";
+import {infoService} from "./Data";
 
-const SubType = ({selected,
-    setSelected,selected1,
-    setSelectedCategory,
-    setSelected1,music, info,selectedCategory,
-    selectedSubType,
-    setSelectedSubType
-}) => {
+const SubType = ({selected, setSelected, music, info, selectedCategory}) => {
+  const handleChange=(e) => {
+      if(selectedCategory===music) {
+        setSelected(e.target.value)
+      } else if(selectedCategory===info) {
+        setSelected(e.target.value)
+      }
+  }
   return (
     <div>
-        
-        <TextField 
-            style={{width: '200px', justifyContent:'center'}}
-            select
-            label="Select subType"
-            id="outlined-select-musicPlatform"
-            size='small'
-            value={selectedSubType}
-            onChange={(e) => setSelectedSubType(e.target.value)}
-            disabled={!selectedCategory}
-        >
-        
-        
-      {selectedCategory===music ? (
-            <MusicPlatform 
-                selected={selected} 
-                setSelected={setSelected}
-                selectedCategory={selectedCategory}
-                music={music}
-            />
-        ): null}
-        {selectedCategory===info ? (
-            <InfoService 
-                selected1={selected1}
-                setSelectedCategory={setSelectedCategory}
-                setSelected1={setSelected1}
-            />
-        ): null}
-      
+      <TextField 
+          style={{width: '200px', justifyContent:'center'}}
+          select
+          label="Select subType"
+          id="outlined-select"
+          size='small'
+          value={selected}
+          onChange={handleChange}
+          disabled={!selectedCategory}
+      >
+        {selectedCategory===music &&
+          musicPlatform.map((music) => (   
+            <MenuItem key={music.id} value={music.name}>
+                {music.name}
+            </MenuItem>
+        ))}
+        {selectedCategory===info && 
+          infoService.map((info) => (
+            <MenuItem key={info.id} value={info.name}>
+                {info.name}
+            </MenuItem>
+            ))}
       </TextField>
-      
     </div>
   )
 }

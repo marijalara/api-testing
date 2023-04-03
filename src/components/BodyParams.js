@@ -28,7 +28,6 @@ const BodyParams = ({
     setEndpoint9,
     endpoint11,
     setEndpoint11,
-    selected1,
     endpoint12,
     setEndpoint12,
     endpoint13,
@@ -437,7 +436,7 @@ const BodyParams = ({
                 </Grid>
                 </>
             ):null}
-            {selected1==='facts' ? (
+            {selected==='facts' ? (
                 <>
                 <Grid container direction="column" item xs={6}>
                 <Stack spacing={5} style={{marginTop: '23px'}}>
@@ -474,7 +473,7 @@ const BodyParams = ({
                 </Grid>
                 </>
             ): null}
-            {selected1==='jokes' ? (
+            {selected==='jokes' ? (
                 <>
                 <Grid container direction="column" item xs={6}>
                 <Stack spacing={5} style={{marginTop: '23px'}}>
