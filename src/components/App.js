@@ -11,8 +11,8 @@ import BodyParams from './BodyParams';
 const App = () => {
     const [darkMode, setDarkMode]=useState(false)
     const [value, setValue]=useState(0)
-    const [apiValue1, setApiValue1]=useState('search')
-    const [apiValue, setApiValue]=useState('searchForAnItem')
+    const [apiValue1]=useState('search')
+    const [apiValue]=useState('searchForAnItem')
     const [endpoint8, setEndpoint8]=useState('')
     const [endpoint10, setEndpoint10]=useState('')
     const [endpoint3, setEndpoint3]=useState('')
@@ -22,15 +22,15 @@ const App = () => {
     const [show2, setShow2]=useState(true)
     const [error, setError]=useState(null)
     const [selected, setSelected]=useState('')
-    const [endpoint, setEndpoint]=useState('RS')
-    const [endpoint1, setEndpoint1]=useState('5')
-    const [endpoint2, setEndpoint2]=useState('video')
-    const [endpoint4, setEndpoint4]=useState('(?strict=on)')
-    const [endpoint5, setEndpoint5]=useState('TRACK_ASC')
-    const [endpoint6, setEndpoint6]=useState('sr-RS')
-    const [endpoint7, setEndpoint7]=useState('5')
-    const [endpoint9, setEndpoint9]=useState('20')
-    const [endpoint11, setEndpoint11]=useState('audio')
+    const [endpoint, setEndpoint]=useState('')
+    const [endpoint1, setEndpoint1]=useState('')
+    const [endpoint2, setEndpoint2]=useState('')
+    const [endpoint4, setEndpoint4]=useState('')
+    const [endpoint5, setEndpoint5]=useState('')
+    const [endpoint6, setEndpoint6]=useState('')
+    const [endpoint7, setEndpoint7]=useState('')
+    const [endpoint9, setEndpoint9]=useState('')
+    const [endpoint11, setEndpoint11]=useState('')
     const [endpoint12, setEndpoint12]=useState('')
     const [endpoint13, setEndpoint13]=useState('')
     const [selectedCategory, setSelectedCategory]=useState('')
@@ -45,16 +45,22 @@ const App = () => {
             type: 'music',
             subType: `${selected}`
         }
-        
         if(selected==='youtube' && selectedCategory===music) {
             params={...params, api: `${apiValue1}`, params:{ q: `${endpoint8}`, regionCode: `${endpoint}`, maxResults: `${endpoint1}`, type: `${endpoint2}` }}
         } else if(selected==='spotify' && selectedCategory===music) {
-            params={...params, api: `${apiValue}`, params:{ q: `${endpoint8}`, type: `${endpoint10}`} }
+            params={...params, api: `${apiValue}`, params:{ q: `${endpoint8}`, type: `${endpoint10}`, limit: `${endpoint9}`, include_external: `${endpoint11}`} }
         } else if(selected==='deezer' && selectedCategory===music) {
             params={...params, api: `${apiValue1}`, params: {q: `${endpoint8}`, strict: `${endpoint4}`, order: `${endpoint5}` }}
         } else if(selected==='shazam' && selectedCategory===music) {
             params={...params, api: `${apiValue1}`, params: {term: `${endpoint3}`, locale: `${endpoint6}`, limit: `${endpoint7}`}}
         }
+
+        for(const [key, value] of Object.entries(params.params)) {
+            if(value===null || value===undefined || value==='') {
+                delete params.params[key]
+            }
+        }
+
         const response=await axios.post(`${url}/${selected}`,params,
             {
             headers: {
@@ -118,7 +124,7 @@ const App = () => {
             />
             <div className='app'>
                 <Header />
-                <Container style={{maxWidth: '1200px'}}>
+                <Container style={{maxWidth: '1000px'}}>
                 <Form 
                     method={method} 
                     url={url}

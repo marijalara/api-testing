@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, Stack, Grid } from '@mui/material';
+import { TextField, Stack, Grid, Typography } from '@mui/material';
 
 const BodyParams = ({
     show2, 
@@ -40,68 +40,40 @@ const BodyParams = ({
                 {selected==='youtube' ?(
                 <>
             <Grid container direction="column" item xs={6} >
-            <Stack spacing={4} style={{marginTop: '23px'}}>
-            <TextField
-                style={{marginLeft: '170px'}}
-                variant='outlined'
-                label="Key"
-                id="outlined-read-only-input" 
-                size='small'
-                margin='normal'
-                defaultValue="q"
-                InputProps={{
-                    readOnly: true
-                }}
+            <Stack spacing={1} style={{marginTop: '23px'}}>
+            <Typography
+                variant='body1' 
+                style={{marginTop: '24px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
             >
-            </TextField>
-            <TextField
-                style={{marginLeft: '170px'}}
-                variant='outlined'
-                label="Key"
-                id="outlined-read-only-input" 
-                size='small'
-                margin='normal'
-                defaultValue="regionCode"
-                InputProps={{
-                    readOnly: true
-                }}
+                q:
+            </Typography>
+            <Typography
+                variant='body1' 
+                style={{ marginTop: '54px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
             >
-            </TextField>
-            <TextField
-                style={{marginLeft: '170px'}}
-                variant='outlined'
-                label="Key"
-                id="outlined-read-only-input" 
-                size='small'
-                margin='normal'
-                defaultValue="maxResults"
-                InputProps={{
-                    readOnly: true
-                }}
+                regionCode:
+            </Typography>
+            <Typography
+                variant='body1' 
+                style={{ marginTop: '50px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
             >
-            </TextField>
-            <TextField
-                style={{marginLeft: '170px'}}
-                variant='outlined'
-                label="Key"
-                id="outlined-read-only-input" 
-                size='small'
-                margin='normal'
-                defaultValue="type"
-                InputProps={{
-                    readOnly: true
-                }}
+                maxResults:
+            </Typography>
+            <Typography
+                variant='body1' 
+                style={{ marginTop: '48px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
             >
-            </TextField>
+                type:
+            </Typography>
             </Stack>
             </Grid>
             <Grid container direction="column" item xs={6}>
             <Stack spacing={1} style={{marginTop: '22px'}}>
             <TextField
-                style={{marginLeft: '170px'}}
+                style={{ width: '60%'}}
                 variant='outlined'
                 label="Value"
-                id="outlined-basic" 
+                id="outlined-basic-q" 
                 size='small'
                 margin='normal'
                 helperText="Example: Adele easy on me"
@@ -110,22 +82,22 @@ const BodyParams = ({
             >
             </TextField>
             <TextField
-                style={{marginLeft: '170px'}}
+                style={{ width: '60%'}}
                 variant='outlined'
                 label="Value"
-                id="outlined-basic" 
+                id="outlined-basic-regionCode" 
                 size='small'
                 margin='normal'
-                helperText="Example: US"
+                helperText="Example: US, RS"
                 value={endpoint}
                 onChange={(e) => setEndpoint(e.target.value)}
             >
             </TextField>
             <TextField
-                style={{marginLeft: '170px'}}
+                style={{width: '60%'}}
                 variant='outlined'
                 label="Value"
-                id="outlined-basic" 
+                id="outlined-basic-maxResults" 
                 size='small'
                 margin='normal'
                 helperText="Example: 5"
@@ -134,10 +106,10 @@ const BodyParams = ({
             >
             </TextField>
             <TextField
-                style={{marginLeft: '170px'}}
+                style={{width: '60%'}}
                 variant='outlined'
                 label="Value"
-                id="outlined-basic" 
+                id="outlined-basic-type" 
                 size='small'
                 margin='normal'
                 helperText="Example: video, playlist, channel"
@@ -152,55 +124,34 @@ const BodyParams = ({
             {selected ==='deezer' ? (
                 <>
                 <Grid container direction="column" item xs={6} >
-                <Stack spacing={5} style={{marginTop: '23px'}}>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="q"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                <Stack spacing={1} style={{marginTop: '23px'}}>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '24px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="strict"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                    q:
+                </Typography>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '54px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="order"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                    strict:
+                </Typography>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '68px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
+                    order:
+                </Typography>
                 </Stack>
                 </Grid>
                 <Grid container direction="column" item xs={6}>
-                <Stack spacing={2} style={{marginTop: '22px'}}>
+                <Stack spacing={1} style={{marginTop: '22px'}}>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-q1" 
                     size='small'
                     margin='normal'
                     helperText="Example: Adele easy on me"
@@ -209,10 +160,10 @@ const BodyParams = ({
                 >
                 </TextField>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-strict" 
                     size='small'
                     margin='normal'
                     helperText="Example: Disable the fuzzy mode (?strict=on)"
@@ -221,10 +172,10 @@ const BodyParams = ({
                 >
                 </TextField>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-order" 
                     size='small'
                     margin='normal'
                     helperText="Example: TRACK_ASC, TRACK_DESC,ARTIST_ASC, ARTIST_DESC"
@@ -240,68 +191,40 @@ const BodyParams = ({
             {selected==='spotify' ? (
                 <>
                 <Grid container direction="column" item xs={6} >
-                <Stack spacing={5} style={{marginTop: '24px'}}>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="q"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                <Stack spacing={5} style={{marginTop: '22px'}}>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '24px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="type"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                    q:
+                </Typography>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '54px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="limit"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                    type:
+                </Typography>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '50px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="include_external"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                    limit:
+                </Typography>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '48px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
+                    include_external:
+                </Typography>
                 </Stack>
                 </Grid>
                 <Grid container direction="column" item xs={6}>
-                <Stack spacing={2} style={{marginTop: '22px'}}>
+                <Stack spacing={1} style={{marginTop: '22px'}}>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-q2" 
                     size='small'
                     margin='normal'
                     helperText="Example: Search query keywords"
@@ -310,10 +233,10 @@ const BodyParams = ({
                 >
                 </TextField>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-type1" 
                     size='small'
                     margin='normal'
                     helperText="Example: track, album"
@@ -322,22 +245,22 @@ const BodyParams = ({
                 >
                 </TextField>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-limit" 
                     size='small'
                     margin='normal'
-                    helperText="Example: Min number of results"
+                    helperText="Example: Min number of results is 1, max 50"
                     value={endpoint9}
                     onChange={(e) => setEndpoint9(e.target.value)}
                 >
                 </TextField>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-include_external" 
                     size='small'
                     margin='normal'
                     helperText="Example: Possible values: audio"
@@ -353,54 +276,33 @@ const BodyParams = ({
                 <>
                 <Grid container direction="column" item xs={6}>
                 <Stack spacing={5} style={{marginTop: '23px'}}>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="term"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '24px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input"
-                    size='small'
-                    margin='normal'
-                    defaultValue="locale"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                    term:
+                </Typography>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '54px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input"
-                    size='small'
-                    margin='normal'
-                    defaultValue="limit"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                    locale:
+                </Typography>
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '48px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
+                    limit:
+                </Typography>
                 </Stack>
                 </Grid>
                 <Grid container direction="column" item xs={6}>
-                <Stack spacing={2} style={{marginTop: '22px'}}>
+                <Stack spacing={1} style={{marginTop: '22px'}}>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-term" 
                     size='small'
                     margin='normal'
                     helperText="Example: Full name of songs or artists"
@@ -409,22 +311,22 @@ const BodyParams = ({
                 >
                 </TextField> 
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-locale" 
                     size='small'
                     margin='normal'
-                    helperText="Example: en-US"
+                    helperText="Example: en-US, sr-RS"
                     value={endpoint6}
                     onChange={(e) => setEndpoint6(e.target.value)}
                 >
                 </TextField> 
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-limit1" 
                     size='small'
                     margin='normal'
                     helperText="Example: Maximum fixed at 5"
@@ -440,28 +342,21 @@ const BodyParams = ({
                 <>
                 <Grid container direction="column" item xs={6}>
                 <Stack spacing={5} style={{marginTop: '23px'}}>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="limit"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '24px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
+                    limit:
+                </Typography>
                 </Stack>
                 </Grid>
                 <Grid container direction="column" item xs={6}>
                 <Stack spacing={2} style={{marginTop: '22px'}}>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-limit3" 
                     size='small'
                     margin='normal'
                     helperText="Example: Must be between 1 and 30"
@@ -477,28 +372,21 @@ const BodyParams = ({
                 <>
                 <Grid container direction="column" item xs={6}>
                 <Stack spacing={5} style={{marginTop: '23px'}}>
-                <TextField
-                    style={{marginLeft: '170px'}}
-                    variant='outlined'
-                    label="Key"
-                    id="outlined-read-only-input" 
-                    size='small'
-                    margin='normal'
-                    defaultValue="limit"
-                    InputProps={{
-                        readOnly: true
-                    }}
+                <Typography
+                    variant='body1' 
+                    style={{ marginTop: '24px', justifyContent: 'right', textAlign: 'right', marginRight: '40px'}}
                 >
-                </TextField>
+                    limit:
+                </Typography>
                 </Stack>
                 </Grid>
                 <Grid container direction="column" item xs={6}>
                 <Stack spacing={2} style={{marginTop: '22px'}}>
                 <TextField
-                    style={{marginLeft: '170px'}}
+                    style={{width: '60%'}}
                     variant='outlined'
                     label="Value"
-                    id="outlined-basic" 
+                    id="outlined-basic-limit4" 
                     size='small'
                     margin='normal'
                     helperText="Example: Must be between 1 and 30"

@@ -7,7 +7,7 @@ const Authorization = ({show1, token, setToken}) => {
        {!show1 ? (
           <Stack>
           <TextField
-              style={{marginLeft: '170px'}}
+              style={{marginLeft: '270px'}}
               variant='outlined'
               label="Token"
               id="outlined-basic" 
