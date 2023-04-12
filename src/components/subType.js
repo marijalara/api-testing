@@ -14,14 +14,14 @@ const SubType = ({selected, setSelected, music, info, selectedCategory}) => {
   return (
     <div>
       <TextField 
-          style={{width: '200px', justifyContent:'center'}}
-          select
-          label="Select subType"
-          id="outlined-select"
-          size='small'
-          value={selected}
-          onChange={handleChange}
-          disabled={!selectedCategory}
+        style={{width: '200px', justifyContent:'center'}}
+        select
+        label="Select subType"
+        id="outlined-select"
+        size='small'
+        value={selected}
+        onChange={handleChange}
+        disabled={!selectedCategory}
       >
         {selectedCategory===music &&
           musicPlatform.map((music) => (   

@@ -4,7 +4,6 @@ import SendIcon from '@mui/icons-material/Send';
 import Categories from './Categories';
 import SubType from './subType';
 
-
 const Form = ({selected, music, info, handleClick, selectedCategory, setSelected, setSelectedCategory}) => {
 
     const handleSubmit=(e) => {
