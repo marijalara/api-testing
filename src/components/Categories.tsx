@@ -1,6 +1,10 @@
 import React from 'react';
 import { TextField, MenuItem } from '@mui/material';
 
+interface CategoriesProps {
+    selectedCategory: string,
+    setSelectedCategory: React.Dispatch<React.SetStateAction<string>>
+}
 const apis=[
     {
         id: 1,
@@ -12,7 +16,7 @@ const apis=[
     }
 ]
 
-const Categories = ({selectedCategory, setSelectedCategory }) => {
+const Categories: React.FC<CategoriesProps> = ({selectedCategory, setSelectedCategory}) => {
     return (
         <div>
             <TextField
@@ -23,7 +27,7 @@ const Categories = ({selectedCategory, setSelectedCategory }) => {
                 size='small'
                 select
                 value={selectedCategory}
-                onChange={(e) =>setSelectedCategory(e.target.value)}
+                onChange={(e) => setSelectedCategory(e.target.value)}
                 sx={{
                     width: 250,
                     maxWidth: '100%'
@@ -31,9 +35,10 @@ const Categories = ({selectedCategory, setSelectedCategory }) => {
             >
                 {apis.map((cate) => (
                     <MenuItem key={cate.id} value={cate.category}>
-                    {cate.category}
+                        {cate.category}
                     </MenuItem>
                 ))}
+
             </TextField>
         </div>
     )
