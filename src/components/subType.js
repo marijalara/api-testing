@@ -4,6 +4,7 @@ import {musicPlatform} from "./Data";
 import {infoService} from "./Data";
 
 const SubType = ({selected, setSelected, music, info, selectedCategory}) => {
+
   const handleChange=(e) => {
       if(selectedCategory===music) {
         setSelected(e.target.value)

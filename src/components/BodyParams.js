@@ -185,7 +185,6 @@ const BodyParams = ({
                 </TextField>
                 </Stack>
                 </Grid>
-                
                 </>
             ): null}
             {selected==='spotify' ? (
@@ -397,7 +396,7 @@ const BodyParams = ({
                 </Stack>
                 </Grid>
                 </>
-                ): null}
+            ): null}
             </Grid>
         ): null}
     </div>

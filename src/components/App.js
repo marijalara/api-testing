@@ -36,7 +36,6 @@ const App = () => {
     const [selectedCategory, setSelectedCategory]=useState('')
 
     const url="https://connectic-plus.herokuapp.com"
-    const method='POST'
     const music='Music'
     const info='Info'
     
@@ -126,16 +125,10 @@ const App = () => {
                 <Header />
                 <Container style={{maxWidth: '1000px'}}>
                 <Form 
-                    method={method} 
-                    url={url}
-                    handleClickPost={handleClickPost}
                     selected={selected}
                     setSelected={setSelected}
                     selectedCategory={selectedCategory}
                     setSelectedCategory={setSelectedCategory}
-                    setData={setData}
-                    token={token}
-                    setError={setError}
                     handleClick={handleClick}
                     music={music}
                     info={info}
@@ -150,7 +143,7 @@ const App = () => {
                         <BottomNavigationAction label="Authorization"onClick={() => setShow1(!show1)}/>
                         <BottomNavigationAction label="Body Params" onClick={() =>setShow2(!show2)} />
                     </BottomNavigation>
-                   <Authorization 
+                    <Authorization 
                         show1={show1} 
                         token={token} 
                         setToken={setToken}

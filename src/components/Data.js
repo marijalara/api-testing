@@ -26,5 +26,4 @@ export const infoService=[
       id: 6,
       name: 'jokes'
     }
-  ]
-  
+]
